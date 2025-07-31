@@ -1,0 +1,40 @@
+name: "Context Workflows"
+
+on: ['push']
+
+jobs:
+  my-context:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "My Step"
+        run: |
+          echo "Hello $MY_ACTION"
+          echo "HELLO $MY_ACTOR"
+        env:
+          MY_ACTION: ${{ github.action }}
+          MY_ACTOR: ${{ github.actor }}
+
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+            node-version: '20'
+          
+      - name: Install dependencies
+        run: npm install
+        
+      - name: Run tests
+        id: tests
+        run: npm test -- --coverage # Runs Jest tests with coverage
+
+      - name: Log workflow name
+        run: |
+          echo "Running workflow: ${{ github.workflow }}"
+        
+      - name: Check result
+        run: |
+          echo "Job result: ${{ jobs.build.steps.tests.outcome }}"
+
+      
