@@ -11,6 +11,7 @@ jobs:
     steps:
       - name: Hello world action step
         id: hello
+        uses: actions/checkout@v4
         uses: Stubby-Guy/custom-actions@0.0.3
         with:
           name: 'Somogyi'
