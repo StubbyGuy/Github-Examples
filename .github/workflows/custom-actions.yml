@@ -11,7 +11,7 @@ jobs:
     steps:
       - name: Hello world action step
         id: hello
-        uses: Stubby-Guy/Custom-Actions@0.0.2
+        uses: Stubby-Guy/Custom-Actions@0.0.3
         with:
           name: 'Somogyi'
       # Use the output from the `hello` step
