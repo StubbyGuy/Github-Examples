@@ -11,10 +11,9 @@ jobs:
     steps:
       - name: Hello world action step
         id: hello
-        uses: actions/checkout@v4
-        uses: Stubby-Guy/custom-actions@0.0.3
+        uses: Stubby-Guy/custom-actions@0.0.5
         with:
           name: 'Somogyi'
       # Use the output from the `hello` step
       - name: Get the output
-        run: echo "The time was ${{ steps.hello.outputs.name }}"
+        run: echo "The time was ${{ steps.hello.outputs.greeting }}"
