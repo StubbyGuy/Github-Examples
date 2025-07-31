@@ -31,7 +31,7 @@ jobs:
 
       - name: Check result
         run: |
-          echo "Job result: ${{ jobs.build.steps.tests.outcome }}"  
+          echo "Test step outcome: ${{ steps.tests.outcome }}" 
 
       - name: Log workflow name
         run: |
