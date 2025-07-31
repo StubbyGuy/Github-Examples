@@ -1,4 +1,4 @@
-Name: "Dependabot Jobs"
+name: "Dependabot Jobs"
 
 on: ['push']
 
