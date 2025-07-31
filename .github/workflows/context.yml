@@ -17,17 +17,23 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
-            node-version: '20'
+          python-version: '3.11'
           
       - name: Install dependencies
-        run: npm install
-        
+        run: |
+          if [ -f requirements.txt ]; then
+            pip install -r requirements.txt
+          else
+            echo "No requirements.txt found"
+          fi
+          
       - name: Run tests
         id: tests
-        run: npm test -- --coverage # Runs Jest tests with coverage
+        run: python -m pytest
+        if: success()
 
       - name: Check result
         run: |
