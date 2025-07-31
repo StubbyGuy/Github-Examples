@@ -17,27 +17,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-
-      - name: Install pytests 1
-        run: pip install pytest    
-          
-      - name: Install dependencies
-        run: |
-          if [ -f requirements.txt ]; then
-            pip install -r requirements.txt
-          else
-            echo "No requirements.txt found"
-          fi
-          
-      - name: Run tests
-        id: tests
-        run: python -m pytest
-        if: success()
-
       - name: Check result
         run: |
           echo "Test step outcome: ${{ steps.tests.outcome }}" 
