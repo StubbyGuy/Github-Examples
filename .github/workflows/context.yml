@@ -29,12 +29,14 @@ jobs:
         id: tests
         run: npm test -- --coverage # Runs Jest tests with coverage
 
+      - name: Check result
+        run: |
+          echo "Job result: ${{ jobs.build.steps.tests.outcome }}"  
+
       - name: Log workflow name
         run: |
           echo "Running workflow: ${{ github.workflow }}"
         
-      - name: Check result
-        run: |
-          echo "Job result: ${{ jobs.build.steps.tests.outcome }}"
+      
 
       
